@@ -17,11 +17,7 @@ function playaudio(){
 }
 
 rooms.forEach(room => {
-  room.addEventListener('onmouseenter',playaudio);
-  room.addEventListener('onmouseleave',()=>{
-    spookySound1.pause();
-    spookySound1.currentTime=0;
-  });
+  room.addEventListener('click',playaudio);
 
 });
 
