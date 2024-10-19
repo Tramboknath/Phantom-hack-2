@@ -5,34 +5,45 @@ document.querySelector('.cta-button').addEventListener('click', function(event) 
 });
 
 
-const rooms = document.querySelectorAll('#room');
-const spookySound = [
-    document.getElementById('audio1'),
-    document.getElementById('audio2'),
-    document.getElementById('audio3')
-] // Example spooky sound URL
-
-let currentlyPlaying = null;
+const rooms = document.querySelectorAll()
 
 
-function pauseAllAudios() {
-    spookySound.forEach(audio => audio.pause());
-  }
-  rooms.forEach((room, index) => {
-    room.addEventListener('click', () => {
-      const currentAudio = spookySound[index];
+const spookySound1 =new Audio('something-haunted-passing-by-190277.mp3');
+// const spookySound2 =new Audio('something-haunted-passing-by-190277.mp3');
+// const spookySound3 =new Audio('something-haunted-passing-by-190277.mp3'); // Example spooky sound URL
 
-      // If the clicked audio is playing, pause it
-      if (currentAudio === currentlyPlaying && !currentAudio.paused) {
-        currentAudio.pause();
-        currentlyPlaying = null;
-      } else {
-        // Pause any other playing audio
-        pauseAllAudios();
-        // Play the clicked audio
-        currentAudio.play();
-        currentlyPlaying = currentAudio;
-      }
-    });
+function playaudio(){
+  spookySound1.play();
+}
+
+rooms.forEach(room => {
+  room.addEventListener('onmouseenter',playaudio);
+  room.addEventListener('onmouseleave',()=>{
+    spookySound1.pause();
+    spookySound1.currentTime=0;
   });
+
+});
+
+
+// function pauseAllAudios() {
+//     spookySound.forEach(audio => audio.pause());
+//   }
+//   rooms.forEach((room, index) => {
+//     room.addEventListener('click', () => {
+//       const currentAudio = spookySound[index];
+
+//       // If the clicked audio is playing, pause it
+//       if (currentAudio === currentlyPlaying && !currentAudio.paused) {
+//         currentAudio.pause();
+//         currentlyPlaying = null;
+//       } else {
+//         // Pause any other playing audio
+//         pauseAllAudios();
+//         // Play the clicked audio
+//         currentAudio.play();
+//         currentlyPlaying = currentAudio;
+//       }
+//     });
+//   });
 
